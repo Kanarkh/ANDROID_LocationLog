@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#BEBEBE</color>
+    <color name="colorGrayBlack">#585858</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorCategory">#51C7C7C7</color>
+    <color name="colorLocationlist">#92C7C7C7</color>
+    <color name="colorLocationContentsList">#C7C7C7</color>
+    <color name="colorDividerView">#41000000</color>
+    <color name="colorTextTitle">#000000</color>
+</resources>

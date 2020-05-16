@@ -1,0 +1,38 @@
+[App 설명/기능]
+ㆍ지도 + 메모장 : 지도에 찍은 Marker위에 사진이나 글을 저장하는 메모기능의 APP
+ㆍ개발이유 : 기존 지도어플의 즐겨찾기 기능은 있지만, 그 위치에 사진이나 글을 길게 적는것에 제한적이라 여행기록, 혹은 어떤 장소에 대한 기록을 정리할수 있는 어플이 있으면 좋겠다는 생각에서 개발 주제로 잡았다.
+
+[파일구조/해당파일 기능설명]
+-Activitys
+ -MyMapLog
+  -Dialog
+   -DialogAddMapMarker.java
+   -DialogAddTitle.java
+  -fragment
+   -DetailImageFragment.java
+   -DetailImageFragmentAdapter.java
+  -Recyclerview
+   -ItemTouchHelperListner.interface
+   -LocationContentsData.java
+   -LocaionContentsRecyclerAdapter.java
+   -TitleListRecyclerAdapter.java
+   -TitleListData.java
+   -TitleItemTouchHelperCallback.java
+  -AddContents.java
+  -AddContentsDetailPhoto.java
+  -MyMapLog.java
+
+ -MyMapTrace
+  -Dialog
+   -DialogStartTrace.java
+  -RecyclerView
+   -TraceLogData.java
+   -TraceLogRecyclerAdapter.java
+  -MyMapTrace.java
+ -QuickCamera
+  -QuickCamera.java
+ -JoinMembership.java
+ -Setting.java
+
+-Manager
+ -ImageManager.java

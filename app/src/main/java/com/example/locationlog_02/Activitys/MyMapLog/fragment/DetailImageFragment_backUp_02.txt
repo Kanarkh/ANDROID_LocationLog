@@ -1,0 +1,151 @@
+package com.example.locationlog_02.Activitys.MyMapLog.fragment;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
+
+import com.example.locationlog_02.Manager.ImageManager;
+import com.example.locationlog_02.R;
+
+import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.core.Mat;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link DetailImageFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ */
+public class DetailImageFragment extends Fragment {
+
+    //Fragment
+    private Context context;
+    private OnFragmentInteractionListener mListener;
+    private ImageManager imageManager;
+
+    //OpenCV
+    private boolean mIsOpenCVReady = false;
+
+
+    public native void detectEdgeJNI(long inputImage, long outputImage, int th1, int th2);
+
+    static {
+        System.loadLibrary("opencv_java4");
+        System.loadLibrary("native-lib");
+    }
+
+    public DetailImageFragment(Context context) {
+        // Required empty public constructor
+        this.context = context;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view=inflater.inflate(R.layout.fragment_detail_image, container, false);
+        ImageView imageView = view.findViewById(R.id.fragment_detailimage_imageView);
+
+        imageManager = new ImageManager(context);
+
+        if(getArguments() !=null){
+            Bundle args = getArguments();
+
+            String imgFileUri = args.getString("img");
+            imageView.setImageBitmap(imageManager.resizeBitmapImage(imageManager.DecodeBitmapFile(imgFileUri),600));
+
+
+        }
+
+        return view;
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (OpenCVLoader.initDebug()) {
+            mIsOpenCVReady = true;
+        }
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
+
+    //OpenCV
+    public void detectEdgeUsingJNI() {
+        if (!mIsOpenCVReady) {
+            return;
+        }
+        Mat src = new Mat();
+        Utils.bitmapToMat(mInputImage, src);
+        mImageView.setImageBitmap(mOriginalImage);
+        Mat edge = new Mat();
+        detectEdgeJNI(src.getNativeObjAddr(), edge.getNativeObjAddr(), 50, 150);
+        Utils.matToBitmap(edge, mInputImage);
+        mEdgeImageView.setImageBitmap(mInputImage);
+    }
+
+    public String getImagePathFromURI(Uri contentUri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        if (cursor == null) {
+            return contentUri.getPath();
+        } else {
+            int idx = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String imgPath = cursor.getString(idx);
+            cursor.close();
+            return imgPath;
+        }
+    }
+}

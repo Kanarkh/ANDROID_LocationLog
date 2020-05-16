@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.MyMapLog.MyMapLog">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/myMap_mapListButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_tetragon"
+            android:onClick="showMapList"
+            android:text="목록" />
+
+        <Button
+            android:id="@+id/myMap_mapButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:background="@drawable/button_tetragon_select"
+            android:onClick="showMap"
+            android:layout_margin="5dp"
+            android:text="지도"
+            android:textColor="@color/colorBlack"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myMap_mapList_category"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:background="@color/colorCategory"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="C\nA\nT\nE\nG\nO\nY"
+            android:textSize="20dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDividerView" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:text="카테고리 추가하기"
+                android:onClick="addMapCategoryAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myMap_mpaList_category_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_mymaplog_category" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myMap_mapList_locationList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorCategory"
+            android:onClick="changeScreenCategory"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/maMap_categoryText_0"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="C\nA\nT\nE\nG\nO\nY"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorLocationlist"
+
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="P\nL\nA\nC\nE"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDividerView" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="addLocationButtuon"
+                android:text="장소 추가하기"
+                />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myMap_mpaList_locationList_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_mymaplog_category"
+            android:background="@color/colorLocationlist"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myMap_mapList_contents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorCategory"
+            android:onClick="changeScreenCategory"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/maMap_categoryText_1"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="C\nA\nT\nE\nG\nO\nY"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorLocationlist"
+            android:onClick="changeScreenLocation"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/maMap_placeText_0"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="P\nL\nA\nC\nE"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorLocationContentsList"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:onClick="addContentsActivity"
+                    android:padding="8dp"
+                    android:src="@drawable/edit_text" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:onClick="moveMapthisPlacePoint"
+                    android:padding="8dp"
+                    android:src="@drawable/mapmove" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myMap_mpaList_contentsList_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_mymaplog_contents"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myMap_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:visibility="visible"
+
+        >
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:maxLines="1"
+                android:singleLine="true"
+                android:id="@+id/myMap_searchMapAddress_editText"
+                android:layout_weight="9"
+                android:layout_width="0dp"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:onClick="findAddressButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/colorWhite"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+        </LinearLayout>
+
+        <!-- MapFragment는 앱에 지도를 표시하기 위해 사용되는 컴포터는로 관련 처리를 자동으로 해줍니다. -->
+        <!-- 앱에서 사용하기 위해서는 레이아웃의 액티비티에 fragment 태그를 사용하여 추가시켜 주어야 합니다.  -->
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:id="@+id/myMap_log_googleMap"
+            tools:context=".MapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_gravity="right"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_circle"
+            android:onClick="addMapMarkerDialog"
+            android:src="@drawable/add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_circle_select"
+            android:padding="5dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            app:srcCompat="@drawable/placeholder" />
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button_circle"
+            android:padding="5dp"
+            android:onClick="changeActivityCamera"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            app:srcCompat="@drawable/edit_text" />
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button_circle"
+            android:padding="5dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:onClick="changeActivityMyMapTrace"
+            app:srcCompat="@drawable/trace" />
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button_circle"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:onClick="changeActivitySetting"
+            android:padding="5dp"
+            app:srcCompat="@drawable/analytics" />
+
+    </LinearLayout>
+
+</LinearLayout>
