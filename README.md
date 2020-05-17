@@ -1,11 +1,10 @@
-#[작품 이름]
+# [작품 이름]
 
 Location Log
 
-#[시연 영상]
+# [시연 영상]
 
-[![시연영상](https://img.youtu.be/io6CH_jUwb0/0.jpg)](https://youtu.be/io6CH_jUwb0)
-
+[![시연영상](https://img.youtube.com/vi/io6CH_jUwb0/0.jpg)](https://www.youtube.com/embed/io6CH_jUwb0)
 
 #[작품 소개]
 
